@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import { productService } from '../services/services.js';
-import { ProductInsertDTO } from '../DTOs/productDTO.js';
+import { ProductInsertDTO } from '../DTOs/ProductDTO.js';
 import { logger } from '../utils.js';
 
 const createProduct = async (req, res) => {

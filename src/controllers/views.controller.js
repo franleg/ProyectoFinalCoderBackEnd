@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
-import { ProductPresenterDTO } from '../DTOs/productDTO.js';
-import { UserPresenterDTO } from '../DTOs/userDTO.js';
+import { ProductPresenterDTO } from '../DTOs/ProductDTO.js';
+import { UserPresenterDTO } from '../DTOs/UserDTO.js';
 import { productService, cartService, userService, orderService } from '../services/services.js';
 import { logger } from '../utils.js';
 
