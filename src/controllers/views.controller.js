@@ -81,7 +81,8 @@ const orders = async (req, res) => {
             css: '/css/userOrders.css'
         });
     } catch (error) {
-        console.log(error) 
+        logger.error(error);
+        res.status(500).send({status: "error", error: "Internal error", trace: error}); 
     }
 }
 
