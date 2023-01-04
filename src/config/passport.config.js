@@ -42,8 +42,8 @@ const initializePassport = () => {
             if (email === config.admin.EMAIL && password !== config.admin.PWD) return done(null, false, {message: 'Contraseña incorrecta'});
             if (email === config.admin.EMAIL && password === config.admin.PWD) {
                 let user = {
-                    first_name: 'Admin',
-                    last_name: 'Coder',
+                    first_name: config.admin.NAME,
+                    last_name: config.admin.LASTNAME,
                     role: 'admin',
                     _id: '0'
                 }

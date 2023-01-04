@@ -15,6 +15,8 @@ export default {
         SECRET: process.env.SESSION_SECRET,
     },
     admin: {
+        NAME: process.env.ADMIN_NAME,
+        LASTNAME: process.env.ADMIN_LASTNAME,
         EMAIL: process.env.ADMIN_EMAIL,
         PWD: process.env.ADMIN_PASSWORD,
     }
