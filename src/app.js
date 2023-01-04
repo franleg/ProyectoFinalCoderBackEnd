@@ -15,7 +15,7 @@ import viewsRouter from './routes/views.router.js';
 import productsRouter from './routes/products.router.js';
 import cartsRouter from './routes/carts.router.js';
 import usersRouter from './routes/users.router.js';
-//import { ProductPresenterDTO } from './DTOs/ProductDTO.js';
+import { ProductPresenterDTO } from './DTOs/ProductDTO.js';
 
 const PORT = process.env.PORT || 8080;
 const modoCluster = process.argv.slice(2)[0] == 'CLUSTER';
@@ -79,7 +79,7 @@ if (modoCluster && cluster.isPrimary) {
 
         socket.on('client: get products by category', data => {
             let products = data;
-            //let productsByCategory = products.map(product => new ProductPresenterDTO(product))
+            let productsByCategory = products.map(product => new ProductPresenterDTO(product))
             io.emit('server: products by category', productsByCategory);
         })
 
