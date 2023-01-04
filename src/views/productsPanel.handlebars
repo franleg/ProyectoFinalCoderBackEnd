@@ -1,0 +1,54 @@
+<header class="header">
+    {{> adminNav}}
+
+    <div class="productsPanel-container">
+        <div class="form-container">
+            <div class="form">
+                <h2>AGREGAR PRODUCTO</h2>
+                <form id="form-addProduct" class="productsForm">
+                    <input type="text" placeholder="Escribir el nombre del producto" name="title">
+                    <input type="number" placeholder="Escribir el precio del producto" name="price">
+                    <input type="text" placeholder="Escribir la categoría del producto" name="category">
+                    <textarea type="text" placeholder="Escribir descripción del producto" name="description"></textarea>
+                    <input type="number" placeholder="Escribir stock del producto" name="stock">
+                    <input type="file" name="thumbnail" class="input-file">
+                    <input type="submit" value="Agregar" class="btn btn-form">
+                </form>
+            </div>
+
+            <div class="form">
+                <h2 class="form-title">ACTUALIZAR PRODUCTO POR ID</h2>
+                <form id="form-updateProduct" class="productsForm">
+                    <input id="input-updateProduct" type="text" placeholder="Ingresar el id del producto a actualizar">
+                    <input type="text" placeholder="Escribir el nombre del nuevo producto" name="title">
+                    <input type="number" placeholder="Escribir el precio del nuevo producto" name="price">
+                    <input type="text" placeholder="Escribir la categoría del producto" name="category">
+                    <textarea type="text" placeholder="Escribir descripción del nuevo producto" name="description"></textarea>
+                    <input type="number" placeholder="Escribir stock del nuevo producto" name="stock">
+                    <input type="file" name="thumbnail" class="input-file">
+                    <input type="submit" value="Actualizar" class="btn btn-form">
+                </form>
+            </div>       
+
+            <div class="form">
+                <h2>BUSCAR PRODUCTO POR ID</h2>
+                <form id="form-getProduct" class="productsForm">
+                    <input id="input-getProduct" type="text" placeholder="Ingresar el id del producto">
+                    <input type="submit" value="Buscar" class="btn btn-form">
+                    <div id="product-container"></div>
+                </form>
+            </div>
+
+            <div class="form">
+                <h2>BORRAR PRODUCTO POR ID</h2>
+                <form id="form-deleteProduct" class="productsForm">
+                    <input id="input-deleteProduct" type="text" placeholder="Ingresar el id del producto">
+                    <input type="submit" value="Borrar" class="btn btn-form">
+                </form>
+            </div>
+        </div>
+    </div>
+</header>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="js/productsPanel.js"></script>

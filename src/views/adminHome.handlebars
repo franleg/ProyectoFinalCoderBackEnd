@@ -1,0 +1,35 @@
+<header class="header">
+    {{> adminNav}}
+
+    <div class="products-container" id="products-container">
+        <h2>Productos</h2>
+        {{#if hasProducts}}
+            <section class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Precio</th>
+                            <th>Stock</th>
+                            <th>Foto</th>
+                        </tr>
+                    </thead>
+                    <tbody id="list-products">
+                        {{#each products}}
+                            <tr>
+                                <td>{{this.id}}</td>
+                                <td>{{this.title}}</td>
+                                <td>${{this.price}}</td>
+                                <td>{{this.stock}}</td>
+                                <td><img src="../img/{{this.thumbnail}}" class="img-fluid img-product" alt="imagen"></td>
+                            </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </section>
+        {{else}}
+            <p>No hay productos disponibles</p>
+        {{/if}}
+    </div>
+</header>

@@ -1,0 +1,85 @@
+{{!-- <div class="register-container">
+    <div>
+        <h1>Registrarse</h1>
+        <form id="register-form" class="register-form">
+            <label>Nombre</label>
+            <input type="text" name="first_name">
+            <label>Apellido</label>
+            <input type="text" name="last_name">
+            <label>Edad</label>
+            <input type="number" name="age">
+            <label>Dirección</label>
+            <input type="text" name="adress">
+            <label>Teléfono</label>
+            <input type="number" name="phone">
+            <label>Email</label>
+            <input type="email" name="email">
+            <label>Contraseña</label>
+            <input type="password" name="password">
+            <label>Avatar</label>
+            <input type="file" name="avatar">
+            <input type="submit" value="Registrarse" class="btn btn-primary">
+        </form>
+    </div>
+
+    <div class="login">
+        <span>Ya eres usuario?&nbsp</span>
+        <a href="./login">Inicia sesión</a>
+    </div>  
+</div> --}}
+
+
+<div class="register-container">
+
+
+    <div class="register-box">
+        <h2>Register</h2>
+        <form id="register-form">
+            <div class="form-inputs">
+                <div class="user-box">
+                    <input type="text" name="first_name" required="">
+                    <label>Nombre</label>
+                </div>
+                <div class="user-box">
+                    <input type="text" name="last" required="">
+                    <label>Apellido</label>
+                </div>   
+                <div class="user-box">
+                    <input type="number" name="age" required="">
+                    <label>Edad</label>
+                </div>   
+                <div class="user-box">
+                    <input type="text" name="adress" required="">
+                    <label>Dirección</label>
+                </div>  
+                <div class="user-box">
+                    <input type="number" name="phone" required="">
+                    <label>Teléfono</label>
+                </div>                    
+                <div class="user-box">
+                    <input type="email" name="email" required="">
+                    <label>Email</label>
+                </div>
+                <div class="user-box">
+                    <input type="password" name="password" required="">
+                    <label>Contraseña</label>
+                </div>
+                <div class="user-box">
+                    <input type="file" name="avatar" class="input-file" required="">
+                    <label></label>
+                </div>  
+            </div>            
+
+            <div class="button-form">
+                <input type="submit" value="Submit" id="submit" required="">
+                
+                <div id="login">
+                    Already registered?
+                    <a href="./login">Login</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="js/register.js"></script>

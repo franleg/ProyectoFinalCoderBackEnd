@@ -1,0 +1,209 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.header {
+    width: 100%;
+    background-image: linear-gradient(rgba(5, 10, 5, 0.80), rgba(90, 40, 90, 0.80)), url(../img/background.jpg);
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+}
+
+.userNav {
+    width: 90%;
+    margin: auto;
+    padding: 25px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    cursor: pointer;
+    transform: scale(0.8);
+}
+
+.userNav ul {
+    margin-bottom: 0px !important;
+}
+
+.userNav ul li {
+    list-style: none;
+    display: inline-block;
+    margin: 0 30px;
+}
+
+.userNav ul li a {
+    text-decoration: none;
+    font-family: Roboto, "sans-serif";
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: #805ad1;
+}
+
+.userNav ul li a:hover {
+    color: #b799f7;
+}
+
+.cart-button {
+    transform: scale(1.3);
+    color: #805ad1;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.cart-button:hover {
+    color: #b799f7; 
+}
+
+.profile-button img {
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+
+.profile-background {
+	position: fixed;
+	top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+	background-color: #111111bd;
+	transition: 0.4s ease;
+	opacity: 0;
+	visibility: hidden;
+	pointer-events: none;
+	z-index: 2;
+	transition-delay: 0.3s;
+}
+
+.profile-background.active {
+	opacity: 1;
+	visibility: visible;
+	pointer-events: unset;
+}
+
+.profile-container {
+	background-color: whitesmoke;
+    width: 320px;
+    height: 100%;
+    position: fixed;
+    right: -120%;
+ 	top: 0;
+    font-family: 'calibri';
+	overflow-x: auto;
+ 	overflow-y: none;
+ 	z-index: 1;
+ 	transition: 1s ease;
+ 	transition-property: right;
+}
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 25px;
+}
+
+.profile > img {
+    width: 120px;
+    height: 120px;
+    border-radius: 100%;
+}
+
+.profile > h1 {
+    color: black;
+    font-size: 26px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.profile > .profile-info > h3 {
+    color: black;
+    font-size: 16px;
+    padding-bottom: 20px;
+}
+
+.profile > hr {
+    color: gray;
+    margin-bottom: 40px;
+    width: 105%;
+}
+
+.profile > .hr-bottom {
+    color: gray;
+    position: absolute;
+    bottom: 50px;
+    width: 85% !important;
+}
+
+.profile > .btn-logout {
+    width: 60%;
+    color: #CBBDDB;
+    position: absolute;
+    bottom: 30px;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+}
+
+.profile > .btn-logout:hover {
+    color: #fff;
+    box-shadow: 0px 0px 5px #8F7CEC;
+}
+
+.profile-container.active {
+	right: 0;
+}
+
+.adminNav {
+    width: 90%;
+    margin: auto;
+    padding: 25px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.adminNav ul {
+    margin-bottom: 0px !important;
+}
+
+.adminNav ul li {
+    list-style: none;
+    display: inline-block;
+    margin: 0 30px;
+}
+
+.adminNav ul li a {
+    text-decoration: none;
+    font-family: 'calibri';
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: #805ad1;
+}
+
+.adminNav ul li a:hover {
+    color: #b799f7;
+}
+
+.btn-logout {
+    background: #242026;
+    width: 100%;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 14px !important;
+    color: #CBBDDB;
+    text-transform: uppercase;
+    transition: .3s;
+    border: 1px solid #8F7CEC;
+}
+
+.btn-logout:hover {
+    color: #fff;
+    box-shadow: 0px 0px 5px #8F7CEC;
+}

@@ -1,0 +1,33 @@
+<nav class="userNav">
+    <a  href="/">
+        <img src="../img/logo.png" class="logo" alt="logo">
+    </a>
+
+    <ul>
+        <li>
+            <a href="/">
+                Productos
+            </a>
+        </li>
+        <li>
+            <a href="../orders">
+                Ordenes de compra
+            </a>
+        </li>
+        <li>
+            <a href="../cart">
+                <i class="fas fa-shopping-cart cart-button" id="cart-button"></i>
+            </a>
+        </li>
+        <li>
+            <div class="profile-button" id="profile-button">
+                <img src="../img/{{user.avatar}}">
+            </div>
+        </li>
+    </ul>
+</nav>
+
+{{> profile}}
+
+<script src="js/profile.js"></script>
+<script src="js/logout.js"></script>

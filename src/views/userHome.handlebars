@@ -1,0 +1,47 @@
+<header class="header">
+    {{> userNav}}
+
+    <div class="products-container">
+        <h2>Productos</h2>
+        <h3>Categorías</h3>
+        <div class="select">
+            <select name="select" id="select">
+                <option selected>Todos</option>
+                <option value="auriculares">Auriculares</option>
+                <option value="mixers">Mixers</option>
+                <option value="monitoresdeestudio">Monitores de estudio</option>
+                <option value="reproductoresdj">Reproductores Dj</option>
+            </select>
+        </div>
+        {{#if hasProducts}}
+            <div class="cards-container" id="cards-container">
+                {{#each products}}
+                    <div class="card">
+                        <img src="../img/{{this.thumbnail}}" class="card-img-top img-cards img-fluid">
+                        <div class="card-body text-center">
+                            <h3 class="card-title">{{this.title}}</h3>
+                            <hr class="card-hr">
+                            <div>
+                                <span>${{this.price}}</span>
+                            </div>
+                            <h5 class="counter-title">Cantidad</h5>
+                            <div class="quantity-container">
+                                <div class="substract-icon quantity-icon" id="substract-icon">-</div>
+                                <div class="quantity" id="quantity">1</div>
+                                <div class="add-icon quantity-icon" id="add-icon">+</div>
+                            </div>
+                            <i id="{{this.id}}" class="fas fa-cart-plus add_cart"></i>
+                        </div>
+                    </div>  
+                {{/each}}              
+            </div>
+        {{else}}
+            <p>No hay productos disponibles</p>
+        {{/if}}
+        </div>
+    </div>    
+</header>
+
+<script src="/socket.io/socket.io.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<script src="js/userHome.js"></script

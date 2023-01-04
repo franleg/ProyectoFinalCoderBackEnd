@@ -1,0 +1,35 @@
+<header class="header">
+    {{> adminNav}}
+
+    <div class="users-container" id="users-container">
+        <h2>Usuarios registrados</h2>
+        {{#if hasUsers}}
+            <section class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Email</th>
+                            <th>Teléfono</th>
+                            <th>Dirección</th>
+                        </tr>
+                    </thead>
+                    <tbody id="list-products">
+                        {{#each users}}
+                            <tr>
+                                <td>{{this.id}}</td>
+                                <td>{{this.name}}</td>
+                                <td>{{this.email}}</td>
+                                <td>{{this.phone}}</td>
+                                <td>{{this.adress}}</td>
+                            </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </section>
+        {{else}}
+            <p>No hay usuarios registrados</p>
+        {{/if}}
+    </div>
+</header>

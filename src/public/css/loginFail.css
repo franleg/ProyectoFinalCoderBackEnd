@@ -1,0 +1,37 @@
+.loginFail-container {
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(rgba(5, 10, 5, 0.80), rgba(90, 40, 90, 0.80)), url(../img/background.jpg);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginFail-container > h1 {
+    color: whitesmoke;
+}
+
+.loginFail-container > p {
+    color: red;
+}
+
+.btn-return {
+    text-decoration: none;
+    text-align: center;
+    background: #242026;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 14px !important;
+    color: #CBBDDB;
+    text-transform: uppercase;
+    transition: .3s;
+    border: 1px solid #8F7CEC;
+}
+
+.btn-return:hover {
+    color: #fff;
+    box-shadow: 0px 0px 5px #8F7CEC;
+}
