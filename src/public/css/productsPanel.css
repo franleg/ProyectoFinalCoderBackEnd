@@ -117,3 +117,12 @@ td {
 .img-product {
     width: 50%;
 }
+
+.error-add, .error-delete, .error-update {
+    width: 100%;
+}
+
+.error-message {
+    color: orangered;
+    text-align: center;
+}

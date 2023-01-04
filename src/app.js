@@ -51,7 +51,7 @@ if (modoCluster && cluster.isPrimary) {
     app.use(session({
         store: MongoStore.create({
             mongoUrl: `mongodb+srv://${config.mongo.USER}:${config.mongo.PWD}@codercluster.skwuuph.mongodb.net/${config.mongo.DB}?retryWrites=true&w=majority`,
-            ttl: 60
+            ttl: 90
         }),
         secret: config.session.SECRET,
         resave: false,

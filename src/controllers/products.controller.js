@@ -30,7 +30,7 @@ const createProduct = async (req, res) => {
 const deleteProduct = async (req, res) => {
     try {
         let id = req.params.idProduct;
-        if(!id) return res.status(400).send({error: 'El id del producto es requerido'});
+        if(!id) return res.status(400).send({status: 'error', error: 'El id del producto es requerido'});
         if(id.length !== 24) return res.status(400).send({status: 'error', error: `Formato de id incorrecto`}); 
         let prodObjectId = mongoose.Types.ObjectId(id);
         let product = await productService.getById(prodObjectId);

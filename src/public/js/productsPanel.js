@@ -10,6 +10,9 @@ let inputGetProduct = document.getElementById("input-getProduct");
 let listProducts = document.getElementById('list-products');
 let listContainer = document.getElementById('list-container');
 let productContainer = document.getElementById('product-container');
+let errorAdd = document.getElementById('error-add');
+let errorUpdate = document.getElementById('error-update');
+let errorDelete = document.getElementById('error-delete');
 
 // ADD NEW PRODUCT
 formAdd.addEventListener('submit', (e) => {
@@ -20,13 +23,21 @@ formAdd.addEventListener('submit', (e) => {
         body: formData
     }).then(res => res.json())
         .then(json => {
-            if (!json.error) socket.emit('client: add product', json.payload)
-            else {
-                let messageError = document.createElement('div');
-                messageError.innerHTML = `<p style="color:red">${json.error}</p>`
-                formAdd.appendChild(messageError);
+            if (!json.error) {
+                errorAdd.innerHTML = "";
+                socket.emit('client: add product', json.payload);
+                Toastify({
+                    text: "Producto Agregado",
+                    gravity: "bottom",
+                    backgroundColor: "#8F7CEC",
+                    className: "info",
+                }).showToast();
+                formAdd.reset();
+            }else {
+                errorAdd.innerHTML = "";
+                errorAdd.innerHTML = `<p class="error-message">${json.error}</p>`
+                
             }
-            formAdd.reset();
         })
 });
 
@@ -61,22 +72,32 @@ socket.on('server: new product', data => {
 formDelete.addEventListener('submit', (e) => {
     e.preventDefault();
     let id = inputDelete.value;
-    fetch (`/api/products/${id}`, {
-        method: 'DELETE'
-    }).then(res => res.json())
-        .then (json => {
-            if (!json.error) socket.emit('client: delete product', json.payload)
-            else {
-                let messageError = document.createElement('div');
-                messageError.innerHTML = `<p style="color:red">${json.error}</p>`
-                formDelete.appendChild(messageError);
-            }
-            inputDelete.value = "";
-        })
+    if (!id) {
+        errorDelete.innerHTML = "";
+        errorDelete.innerHTML = '<p class="error-message">El id del producto es requerido</p>'
+    }else {
+        fetch (`/api/products/${id}`, {
+            method: 'DELETE'
+        }).then(res => res.json())
+            .then (json => {
+                if (!json.error) {
+                    socket.emit('client: delete product', json.payload);
+                    Toastify({
+                        text: "Producto Eliminado",
+                        gravity: "bottom",
+                        backgroundColor: "orangered",
+                        className: "info",
+                    }).showToast()
+                    inputDelete.value = "";
+                }else {
+                    errorDelete.innerHTML = "";
+                    errorDelete.innerHTML = `<p class="error-message">${json.error}</p>`
+                }
+            })
+    }
 });
 
 socket.on('server: products', data => {
-    let listProducts = document.getElementById('list-products');
     listProducts.innerHTML = "";
     let products = "";
     data.forEach(product => {
@@ -97,20 +118,32 @@ socket.on('server: products', data => {
 formUpdate.addEventListener('submit', (e) => {
     e.preventDefault();
     let id = inputUpdate.value;
-    let formData = new FormData(e.target);
-    fetch(`/api/products/${id}`, { 
-        method: 'PUT',
-        body: formData
-    }).then(res => res.json())
-        .then(json => {
-            if (!json.error) socket.emit('client: update product', json.payload)
-            else {
-                let messageError = document.createElement('div');
-                messageError.innerHTML = `<p style="color:red">${json.error}</p>`
-                formUpdate.appendChild(messageError);
-            }
-            formUpdate.reset();
-        })
+    if(!id) {
+        errorUpdate.innerHTML = "";
+        errorUpdate.innerHTML = '<p class="error-message">El id del producto es requerido</p>'
+    }else {
+        let formData = new FormData(e.target);
+        fetch(`/api/products/${id}`, { 
+            method: 'PUT',
+            body: formData
+        }).then(res => res.json())
+            .then(json => {
+                if (!json.error) {
+                    socket.emit('client: update product', json.payload);
+                    Toastify({
+                        text: "Producto Actualizado",
+                        gravity: "bottom",
+                        backgroundColor: "#8F7CEC",
+                        className: "info",
+                    }).showToast();
+                    formUpdate.reset();
+                }
+                else {
+                    errorUpdate.innerHTML = "";
+                    errorUpdate.innerHTML = `<p class="error-message">${json.error}</p>`
+                }
+            })
+    }
 });
 
 socket.on('server: productsUpdated', data => {
@@ -130,17 +163,24 @@ socket.on('server: productsUpdated', data => {
 formGetProduct.addEventListener('submit', (e) => {
     e.preventDefault();
     let id = inputGetProduct.value;
-    fetch(`/api/products/product/${id}`, { 
-        method: 'GET',
-    }).then(res => res.json())
-        .then(json => {
-            if (!json.error) socket.emit('client: get product', json.payload)
-            else {
-                let messageError = document.createElement('div');
-                messageError.innerHTML = `<p style="color:red">${json.error}</p>`
-                formGetProduct.appendChild(messageError);
-            }
-        })
+    if(!id) {
+        productContainer.innerHTML = "";
+        productContainer.innerHTML = '<p class="error-message">El id del producto es requerido</p>'
+    } else {
+        fetch(`/api/products/product/${id}`, { 
+            method: 'GET',
+        }).then(res => res.json())
+            .then(json => {
+                if (!json.error) {
+                    socket.emit('client: get product', json.payload);
+                    formGetProduct.reset();
+                }
+                else {
+                    productContainer.innerHTML = "";
+                    productContainer.innerHTML = `<p class="error-message">${json.error}</p>`
+                }
+            })
+    }
 });
 
 socket.on('server: product', data => {

@@ -13,6 +13,7 @@
                     <input type="number" placeholder="Escribir stock del producto" name="stock">
                     <input type="file" name="thumbnail" class="input-file">
                     <input type="submit" value="Agregar" class="btn btn-form">
+                    <div id="error-add"></div>
                 </form>
             </div>
 
@@ -27,6 +28,7 @@
                     <input type="number" placeholder="Escribir stock del nuevo producto" name="stock">
                     <input type="file" name="thumbnail" class="input-file">
                     <input type="submit" value="Actualizar" class="btn btn-form">
+                    <div id="error-update"></div>
                 </form>
             </div>       
 
@@ -44,6 +46,7 @@
                 <form id="form-deleteProduct" class="productsForm">
                     <input id="input-deleteProduct" type="text" placeholder="Ingresar el id del producto">
                     <input type="submit" value="Borrar" class="btn btn-form">
+                    <div id="error-delete"></div>
                 </form>
             </div>
         </div>
@@ -51,4 +54,5 @@
 </header>
 
 <script src="/socket.io/socket.io.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 <script src="js/productsPanel.js"></script>
