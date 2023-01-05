@@ -8,6 +8,7 @@ const confirmButton = document.getElementById("btn-confirm");
 cartContainer.addEventListener('click', (e) => {
     if (e.target.classList.contains('icon-delete')){
        let id = e.target.id;
+       console.log(id)
        let productInCart = {
             id: id,
        };
@@ -44,7 +45,7 @@ socket.on('server: products', data => {
     let products = "";
     data.forEach(product => {
         products += `<tr>
-                        <td class="td-delete"><i class="fas fa-trash-alt icon-delete" id=${product.product.id}></i></td>
+                        <td class="td-delete"><i class="fas fa-trash-alt icon-delete" id=${product.product._id}></i></td>
                         <td>${product.product.title}</td>
                         <td>$${product.product.price}</td>
                         <td>${product.quantity}</td>

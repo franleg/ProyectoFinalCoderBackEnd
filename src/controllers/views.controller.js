@@ -50,17 +50,19 @@ const cart = async (req, res) => {
         let cartObjectId = mongoose.Types.ObjectId(cartId);
         let cart = await cartService.getByIdAndPopulate(cartObjectId);
         let products = cart.products;
-        const productsInCart = products.map((product) => {
-            return products = {
-                product: new ProductPresenterDTO(product.product),
-                quantity: product.quantity,
-                id: product._id
+        const productsInCart = products.map((prod) => {
+            return {
+                product: new ProductPresenterDTO(prod.product),
+                subTotal: prod.product.price * prod.quantity,
+                quantity: prod.quantity,
             }
         });
+        const totalPurchase = productsInCart.reduce ((acc, prod) => acc + prod.subTotal, 0)
         res.render('cart', {
             user,
             hasProducts: productsInCart.length > 0,
             productsInCart,
+            totalPurchase,
             css: '/css/cart.css',
         });
     } catch (error) {
@@ -73,7 +75,6 @@ const orders = async (req, res) => {
     try {
         const user = req.session.user;
         const orders = await orderService.getByEmail(user.email);
-        for (let order of orders) console.log(order.items)
         res.render('userOrders', {
             hasOrders: orders.length > 0,
             user,

@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import { cartService, productService, orderService } from '../services/services.js';
+import { ProductPresenterDTO } from '../DTOs/ProductDTO.js';
 import { transporter, messageHTML, logger } from '../utils.js';
 import config from '../config/config.js';
 
@@ -61,6 +62,14 @@ const confirmPurchase = async (req, res) => {
         const cartId = user.cart;
         let cartObjectId = mongoose.Types.ObjectId(cartId);
         let cart = await cartService.getByIdAndPopulate(cartObjectId);
+        const productsInCart = cart.products.map((prod) => {
+            return {
+                product: new ProductPresenterDTO(prod.product),
+                subTotal: prod.product.price * prod.quantity,
+                quantity: prod.quantity,
+            }
+        });
+        const totalPurchase = productsInCart.reduce ((acc, prod) => acc + prod.subTotal, 0)
         let emailToUser = await transporter.sendMail({
             from: 'Yo',
             to: user.email,
@@ -68,7 +77,7 @@ const confirmPurchase = async (req, res) => {
             html: `<div>
                     <h1>¡Hola ${user.name}, gracias por tu compra!</h1>
                     <h2>Detalle de la orden:</h2>
-                    ${messageHTML(cart)}
+                    ${messageHTML(productsInCart, totalPurchase)}
                 </div>`
         })
         let emailToAdmin = await transporter.sendMail({
@@ -82,18 +91,20 @@ const confirmPurchase = async (req, res) => {
                     <p>Dirección: ${user.adress}</p>
                     <p>Teléfono: ${user.phone}</p>
                     <h2>Detalle de la orden:</h2>
-                    ${messageHTML(cart)}
+                    ${messageHTML(productsInCart, totalPurchase)}
                 </div>`
         })
+
         const orders = await orderService.getAll();
         const newOrder = {
             items: [],
-            email: user.email
+            email: user.email,
         }
-        cart.products.forEach(product => {
+        productsInCart.forEach(prod => {
             const item = {
-                product: product.product.title,
-                quantity: product.quantity                
+                product: prod.product.title,
+                subTotal: prod.product.price * prod.quantity,
+                quantity: prod.quantity                
             }
             newOrder.items.push(item);
         })

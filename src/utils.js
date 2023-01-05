@@ -50,19 +50,19 @@ const transporter = nodemailer.createTransport({
     }
 })
 
-const messageHTML = (cart) => {
+const messageHTML = (prods, total) => {
     let products = "";
-    cart.products.forEach(prod => {
+    prods.forEach(prod => {
         products += `<div>
                         <hr/>
                         <p>Producto: ${prod.product.title}</p>
                         <p>Precio: $${prod.product.price}</p>
-                        <p>Descripción: ${prod.product.description}</p>
                         <p>Cantidad: ${prod.quantity}</p>
-                        <hr/>
+                        <p>Subtotal: $${prod.subTotal}</p>
                     </div>`
     }) 
-    return products;
+    let message = `${products} <p>TOTAL: $${total}</p>`
+    return (message);
 }
 
 export { __dirname, logger, createHash, isValidPassword, uploader, transporter, messageHTML };

@@ -10,8 +10,8 @@
                         <tr>
                             <th class="th-delete"></th>
                             <th>Nombre</th>
-                            <th>Precio</th>
                             <th>Cantidad</th>
+                            <th>Subtotal</th>
                             <th>Foto</th>
                         </tr>
                     </thead>
@@ -20,13 +20,36 @@
                             <tr>
                                 <td class="td-delete"><i class="fas fa-trash-alt icon-delete" id={{this.product.id}}></i></td>
                                 <td>{{this.product.title}}</td>
-                                <td>${{this.product.price}}</td>
                                 <td>{{this.quantity}}</td>
+                                <td>${{this.subTotal}}</td>
                                 <td><img src="../img/{{this.product.thumbnail}}" class="img-fluid img-product" alt="imagen"></td>
                             </tr>
                         {{/each}}
                     </tbody>
                 </table>
+                <h3>Total del carrito</h3>
+                <table class="total-table">
+                    <tbody>
+                        <tr>
+                            <th>Envío</th>
+                            <td>
+                                <span>Envío Gratuito</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Impuesto</th>
+                            <td>
+                                <span>$0</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>TOTAL</th>
+                            <td>
+                                <span>${{totalPurchase}}</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table> 
             </div>
             <button class="btn btn-confirm" id="btn-confirm">Finalizar Compra</button>
         {{else}}
