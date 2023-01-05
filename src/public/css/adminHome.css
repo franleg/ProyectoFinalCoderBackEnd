@@ -6,13 +6,13 @@
 }
 
 .products-container > h2 {
-    color: whitesmoke;
+    color: #bdafda;
     text-align: center;
     margin: 50px;
     font-family: 'calibri';
     font-size: 38px;
     letter-spacing: 3px;
-    text-shadow: 0 15px 25px rgba(65, 57, 102, 0.7);
+    text-shadow: 0 0 5px #8F7CEC, 0 0 2px #8F7CEC, 0 0 50px #7363c2;
 }
 
 .products-container > p {

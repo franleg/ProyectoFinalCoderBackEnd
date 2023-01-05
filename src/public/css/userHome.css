@@ -7,13 +7,13 @@
 }
 
 .products-container > h2 {
-    color: whitesmoke;
+    color: #bdafda;
     text-align: center;
     margin: 30px;
     font-family: 'calibri';
     font-size: 38px;
     letter-spacing: 3px;
-    text-shadow: 0 10px 15px rgba(29, 25, 46, 0.6);
+    text-shadow: 0 0 5px #8F7CEC, 0 0 2px #8F7CEC, 0 0 50px #7363c2;
 }
 
 .products-container > p {
