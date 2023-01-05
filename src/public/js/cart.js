@@ -8,7 +8,6 @@ const confirmButton = document.getElementById("btn-confirm");
 cartContainer.addEventListener('click', (e) => {
     if (e.target.classList.contains('icon-delete')){
        let id = e.target.id;
-       console.log(id)
        let productInCart = {
             id: id,
        };
