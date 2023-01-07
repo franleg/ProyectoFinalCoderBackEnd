@@ -31,7 +31,7 @@ if (modoCluster && cluster.isPrimary) {
     }
 
     cluster.on('exit', worker => {
-        console.log(`Worker ${worker.process.pid} died`);
+        logger.info(`Worker ${worker.process.pid} died`);
         cluster.fork();
     })
 } else {
