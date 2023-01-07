@@ -23,8 +23,8 @@ const modoCluster = process.argv.slice(2)[0] == 'CLUSTER';
 if (modoCluster && cluster.isPrimary) {
     const CPUs = cpus().length;
 
-    console.log(`Numero de procesadores: ${CPUs}`);
-    console.log(`PID MASTER ${process.pid}`);
+    logger.info(`Numero de procesadores: ${CPUs}`);
+    logger.info(`PID MASTER ${process.pid}`);
 
     for (let i = 0; i < CPUs; i++) {
         cluster.fork();
