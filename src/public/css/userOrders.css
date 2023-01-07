@@ -16,6 +16,14 @@
     text-shadow: 0 0 5px #8F7CEC, 0 0 2px #8F7CEC, 0 0 50px #7363c2;
 }
 
+.users-container p {
+    color: whitesmoke;
+    text-align: center;
+    margin: 50px;
+    font-family: 'calibri';
+    font-size: 24px;
+}
+
 .table-container {
     display: flex;
     width: 100%;
