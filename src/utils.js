@@ -3,21 +3,22 @@ import { dirname } from 'path';
 import bcrypt from 'bcrypt';
 import multer from 'multer';
 import nodemailer from 'nodemailer';
-import winston from 'winston';
+import { createLogger, format, transports } from 'winston';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const logger = winston.createLogger({
+const logger = createLogger({
+    format: format.combine(format.simple()),
     transports:[
-        new winston.transports.Console({
-            level:'info'
+        new transports.Console({
+            level:'info',
         }),
-        new winston.transports.File({
+        new transports.File({
             level:'warn',
             filename:'warn.log'
         }),
-        new winston.transports.File({
+        new transports.File({
             level:'error',
             filename:'error.log'
         })
