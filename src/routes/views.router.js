@@ -16,9 +16,9 @@ router.get('/cart', authentication.privateValidation, authentication.executePoli
 
 router.get('/orders', authentication.privateValidation, authentication.executePolicies (['USER']), viewsController.orders);
 
-router.get('/registerfail', viewsController.registerFail);
+router.get('/registerfail', authentication.publicValidation, viewsController.registerFail);
 
-router.get('/loginfail', viewsController.loginFail);
+router.get('/loginfail',authentication.publicValidation,  viewsController.loginFail);
 
 router.get('/productsPanel', authentication.privateValidation, authentication.executePolicies(['ADMIN']), viewsController.productsPanel);
 

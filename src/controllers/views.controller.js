@@ -91,7 +91,7 @@ const registerFail = (req, res) => {
     try {
         let errorMessage = req.flash('error')[0];
         res.locals.errorMessage = errorMessage;
-        res.render('registerFail', {
+        res.render('registerfail', {
             css: '/css/registerFail.css',
         });
     } catch (error) {
@@ -104,7 +104,7 @@ const loginFail = (req, res) => {
     try {
         let errorMessage = req.flash('error')[0];
         res.locals.errorMessage = errorMessage;
-        res.render('loginFail', {
+        res.render('loginfail', {
             css: '/css/loginFail.css',
         });
     } catch (error) {
