@@ -66,10 +66,11 @@ const confirmPurchase = async (req, res) => {
             return {
                 product: new ProductPresenterDTO(prod.product),
                 subTotal: prod.product.price * prod.quantity,
-                quantity: prod.quantity,
+                quantity: prod.quantity
             }
         });
-        const totalPurchase = productsInCart.reduce ((acc, prod) => acc + prod.subTotal, 0)
+        const totalPurchase = productsInCart.reduce ((acc, prod) => acc + prod.subTotal, 0);
+
         let emailToUser = await transporter.sendMail({
             from: 'Yo',
             to: user.email,
