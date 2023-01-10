@@ -41,7 +41,7 @@
     padding: 10px 0;
     font-size: 16px;
     color: #fff;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
     border: none;
     border-bottom: 1px solid #fff;
     outline: none;
@@ -60,7 +60,7 @@
 
 .login-box .user-box input:focus~label,
 .login-box .user-box input:valid~label {
-    top: -90px;
+    top: -80px;
     left: 0;
     color: #8F7CEC;
     font-size: 12px;
