@@ -16,7 +16,7 @@
     text-shadow: 0 0 5px #8F7CEC, 0 0 2px #8F7CEC, 0 0 50px #7363c2;
 }
 
-.users-container p {
+.users-container > p {
     color: whitesmoke;
     text-align: center;
     margin: 50px;
@@ -40,7 +40,7 @@ table {
     font-family: 'calibri';
     border: none;
     border-collapse: collapse;
-    width: 85%;
+    width: 90%;
     max-width: 100%;
     white-space: nowrap;
     background-color: white;
@@ -80,6 +80,14 @@ td {
     width: 40%;
 }
 
-.img-product {
-    width: 40%;
+.items-td {
+    width: 55%;
 }
+
+.order-item {
+    color: black;
+    font-size: 18px;
+    margin: 2px;
+    text-align: left;
+}
+

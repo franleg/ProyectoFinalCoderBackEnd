@@ -75,10 +75,13 @@ const orders = async (req, res) => {
     try {
         const user = req.session.user;
         const orders = await orderService.getByEmail(user.email);
+        const items = [];
+        orders.forEach(order => items.push(order.items));
         res.render('userOrders', {
             hasOrders: orders.length > 0,
             user,
             orders: orders,
+            items: items,
             css: '/css/userOrders.css'
         });
     } catch (error) {

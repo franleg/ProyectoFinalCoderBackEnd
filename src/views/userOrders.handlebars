@@ -10,6 +10,7 @@
                         <tr>
                             <th class="order-th">N° de Orden</th>
                             <th>Fecha y hora</th>
+                            <th>Items</th>
                         </tr>
                     </thead>
                     <tbody id="list-products">
@@ -17,6 +18,11 @@
                             <tr>
                                 <td class="order-td">{{this.order}}</td>
                                 <td>{{this.created_at}}</td>
+                                <td class="items-td"> 
+                                    {{#each items}}
+                                        <p class="order-item">- {{this.product}} x{{this.quantity}}</p>
+                                    {{/each}}
+                                </td>
                             </tr>
                         {{/each}}
                     </tbody>
