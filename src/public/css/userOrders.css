@@ -80,7 +80,7 @@ td {
     width: 40%;
 }
 
-.items-td {
+.items-th, .items-td {
     width: 55%;
 }
 
@@ -89,5 +89,6 @@ td {
     font-size: 18px;
     margin: 2px;
     text-align: left;
+    padding-left: 50px;
 }
 
